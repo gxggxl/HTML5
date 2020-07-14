@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" style="border:1px solid #0aa;">
+			您的浏览器不支持 HTML5 canvas 标签。</canvas>
+		<script>
+			var c = document.getElementById("myCanvas");
+			var ctx = c.getContext("2d");
+			//小
+			ctx.beginPath();
+			ctx.strokeStyle = "#000000"
+			ctx.arc(100, 75, 30, 0, 2 * Math.PI,false);
+			ctx.stroke();
+			//中
+			ctx.beginPath();
+			ctx.strokeStyle = "#fd8008"
+			ctx.arc(120, 75, 50, 0, 2 * Math.PI,false);
+			ctx.stroke();
+			//大
+			ctx.beginPath();
+			ctx.strokeStyle = "#0000ff"
+			ctx.arc(140, 75, 70, 0, 2 * Math.PI,false);
+			ctx.stroke();
+		</script>
+	</body>
+</html>
