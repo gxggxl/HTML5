@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>进度条</title>
+		<style type="text/css">
+			div{
+				margin: 0;
+				padding: 0;
+			}
+			#load,
+			#loading {
+				background-color: #6caf00;
+				/* text-align: center; */
+			}
+
+			#load {
+				width: 0%;
+			}
+
+			#loading {
+				animation: move 10s linear;
+			}
+
+			#allload {
+				width: 200px;
+				height: 19px;
+				border: 1px solid #000000;
+			}
+
+			@keyframes move {
+				0% {
+					width: 0%;
+				}
+				100% {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<p>JavaScript百分比进度条</p>
+		<div id="allload">
+			<div id="load"></div>
+		</div>
+		<input type="button" value="点击" onclick="start()" ; />
+	</body>
+	<script type="text/javascript">
+		var pg = document.getElementById("pg");
+
+		function myload() {
+			if (pg.value != 100) {
+				pg.value = pg.value + 1;
+			}
+		}
+
+		function start() {
+			var loading = document.getElementById("load");
+			loading.id = "loading";
+			var count = 0;
+			var timer = setInterval(function() {
+				if (count < 100) {
+					count = count + 1;
+				} else {
+					clearInterval(timer);
+				}
+				loading.innerHTML = count + "%";
+			}, 100);
+		}
+	</script>
+</html>
