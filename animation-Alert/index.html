@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert弹窗插件</title>
+    <link rel="stylesheet" href="animation-Alert.css">
+    <!--<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <script src="js/jquery-v3.5.1.min.js"></script>
+    <script src="animation-Alert.js"></script>
+
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .btn_s {
+            display: flex;
+            height: 100%;
+            justify-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .box {
+            padding: 20px;
+            background: #f1f1f1;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .box h2 {
+            font-size: 16px;
+            padding-bottom: 12px;
+        }
+
+        .box h3 {
+            color: #f54655;
+            font-size: 15px;
+        }
+
+        .box p {
+            font-size: 14px;
+            color: #444;
+            padding-top: 10px;
+        }
+
+        .btn_s button {
+            padding: 10px;
+            cursor: pointer;
+            height: 40px;
+            min-width: 120px;
+            border: 0;
+            color: #FFF;
+            margin: 10px 0;
+            border-radius: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h2>Alert弹窗插件 炫酷动画</h2>
+    <div class="btn_s">
+        <button type="button" onclick="alert('普通弹窗文字说明')" style="background:#333;">普通弹窗</button>
+        <button type="button" onclick="tips('提示文字说明')" style="background:#f68909;">提示弹窗</button>
+        <button type="button" onclick="confirm()" style="background:#14bf24;">询问弹窗</button>
+        <button type="button" onclick="loading()" style="background:#f345dc;">Loading</button>
+        <button type="button" onclick="animation.alert('model')" style="background:#17d397;">自定义弹窗</button>
+        <button type="button" onclick="success()" style="background:#238af4;">成功</button>
+        <button type="button" onclick="error()" style="background:#f54655;">失败</button>
+    </div>
+    <h3>使用说明</h3>
+    <p>请将本页面的HTML结构复制过去<br>再引入JS文件：jquery.js 和 animation-Alert.js<br>样式文件： animation-Alert.css </p>
+</div>
+
+<!--自定义弹窗-->
+<div class="model-mask" onclick="animation.closeAll()" id="mask-model"></div>
+<div class="model model-model" id="model">
+    <div class="model-title">自定义弹窗</div>
+    <div class="model-content">
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+        这里是自定义的内容<br>
+    </div>
+</div>
+
+
+<!--普通弹窗-->
+<div class="model-mask" id="mask-alert"></div>
+<div class="model model-alert" id="alert">
+    <div class="model-title">温馨提示</div>
+    <div class="model-text">这里是内容</div>
+    <div class="model-btn">
+        <button>确定</button>
+    </div>
+</div>
+
+<!--提示弹窗-->
+<div class="model-mask" id="mask-tips"></div>
+<div class="model model-tips" id="tips">
+    <div class="model-text">这里是提示内容</div>
+</div>
+
+<!--询问弹窗-->
+<div class="model-mask" id="mask-confirm"></div>
+<div class="model model-confirm" id="confirm">
+    <div class="model-title">温馨提示</div>
+    <div class="model-text">确定要操作？</div>
+    <div class="model-btn">
+        <button type="button" class="cancel">取消</button>
+        <button type="button" class="ok">确定</button>
+    </div>
+</div>
+
+<!--提交成功-->
+<div class="model-mask" id="mask-success"></div>
+<div class="model model-success" id="success">
+    <div class="model-icon">
+        <svg width="50" height="50">
+            <circle class="alert-svg-circle" cx="25" cy="25" fill="none" r="24" stroke="#238af4"
+                    stroke-width="2"></circle>
+            <polyline class="alert-svg-gou" fill="none" points="14,25 23,34 36,18" stroke="#238af4"
+                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+        </svg>
+    </div>
+    <div class="model-text">操作成功</div>
+</div>
+
+<!--提交失败-->
+<div class="model-mask" id="mask-error"></div>
+<div class="model model-error" id="error">
+    <div class="model-icon">
+        <svg width="50" height="50">
+            <circle class="alert-svg-circle" cx="25" cy="25" fill="none" r="24" stroke="#f54655"
+                    stroke-width="2"></circle>
+            <polyline class="alert-svg-ca1" fill="none" points="18,17 32,35" stroke="#f54655" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="2.5"/>
+            <polyline class="alert-svg-ca2" fill="none" points="18,35 32,17" stroke="#f54655" stroke-linecap="round"
+                      stroke-linejoin="round" stroke-width="2.5"/>
+        </svg>
+    </div>
+    <div class="model-text">操作失败</div>
+</div>
+
+<!--这是Loading-->
+<div class="model-mask" id="mask-loading"></div>
+<div class="model model-loading" id="loading">
+    <div class="model-load">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="model-text">正在加载</div>
+</div>
+
+<script>
+    //参数说明 id,文字,方法
+
+    //普通弹窗
+    function alert(txt) {
+        animation.alert('alert', txt, function () {
+            animation.close('alert');
+            console.log("点击了确定");
+        })
+    }
+
+    //提示弹窗
+    function tips(txt) {
+        animation.tips('tips', txt, function () {
+            console.log("提示关闭后");
+        }, 2000)
+    }
+
+    //询问弹窗
+    function confirm() {
+        animation.confirm('confirm', '确定要这么做',
+            function () {
+                animation.close('confirm');
+                animation.success('success', '点击了确定');
+            },
+            function () {
+                animation.close('confirm');
+                animation.error('error', '点击了取消');
+            },
+        )
+    }
+
+    //操作成功调用
+    function success() {
+        animation.success('success', '操作成功', function () {
+            console.log('操作成功关闭后');
+        }, 1800)
+    }
+
+    //操作失败调用
+    function error() {
+        animation.error('error', '操作失败', function () {
+            console.log('操作失败关闭后');
+        }, 1800)
+    }
+
+    //显示loading
+    function loading() {
+        animation.loading('loading', '正在加载');
+        //2秒后隐藏
+        setTimeout(() => {
+            animation.hideLoading('loading');
+        }, 1500)
+    }
+
+</script>
+
+
+</body>
+
+</html>
