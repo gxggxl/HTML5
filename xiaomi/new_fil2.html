@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div {
+			  position: relative;
+			  width: 200px;
+			  height: 260px;
+			  line-height: 60px;
+			  text-align: center;
+			  border: 1px solid #666;
+			  cursor: pointer;
+			  top: 50%;
+			  left: 50%;
+			  -webkit-transform: translate(-50%, -50%);
+			          transform: translate(-50%, -50%);
+			  -webkit-transition: all .5s;
+			  transition: all .5s;
+			}
+			
+			div:hover {
+				background: url(images/magnify.png) no-repeat;
+				background-position: center;
+			  box-shadow: 0 0 0 5vmax rgba(129, 137, 58, 0.1);
+			  -webkit-transform: translate(-50%, -50%);
+			          transform: translate(-50%, -50%);
+			}
+		</style>
+	</head>
+	<body>
+		<p>使用 box-shadow 实现半透明遮罩，在某些特殊场景下能发挥很好的作用</p>
+		<div>Hover Me
+		</div>
+		<div>Hover Me</div>
+		<div>Hover Me</div>
+	</body>
+</html>
